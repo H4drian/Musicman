@@ -199,10 +199,9 @@ class Buzzer {
 
   public:
     Buzzer(int p, BuzzerType bt);
-    void setPin(int p);
     void setTempo(uint_8 t);
     void setVolume(uint_8 v);
-    void setBuzzerType(BuzzerType bt);
+    void setBuzzerType(uint_8 p, BuzzerType bt);
     void play(Notes note, NoteType noteType, bool isDotted);
     void off();
 };
