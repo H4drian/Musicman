@@ -40,7 +40,7 @@ void Buzzer::setBuzzerType(BuzzerType bt) {
 }
 
 void Buzzer::play(Notes note, NoteType noteType, bool isDotted) {
-  const long dur = getDuration(noteType, isDotted);
+  const long dur = getNoteDuration(noteType, isDotted);
 
   if (buzzerType == ACTIVE) {
     if (dur == -1) {
@@ -53,9 +53,9 @@ void Buzzer::play(Notes note, NoteType noteType, bool isDotted) {
 
     if (dur == -1) {
       while (true) {
-        digitalWrite(pin, HIGH);
+        analogWrite(pin, volume);
         delayMicroseconds(halfPeriodMicros);
-        digitalWrite(pin, LOW);
+        analogWrite(pin, 0);
         delayMicroseconds(halfPeriodMicros);
       }
     } else {
@@ -78,7 +78,15 @@ void Buzzer::off() {
   }
 }
 
-double getNoteDuration(NoteType noteType, bool isDotted = false) {
+void Buzzer::setTempo(uint_8 t) {
+  tempo = t;
+}
+
+void Buzzer::setVolume(uint_8 v) {
+  volume = v;
+}
+
+double Buzzer::getNoteDuration(NoteType noteType, bool isDotted = false) {
   const double beatsPerMinute = static_cast < double > (tempo);
   const double quarterNoteDuration = 60.0 / beatsPerMinute;
   double duration = 0.0;
