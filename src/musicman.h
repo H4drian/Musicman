@@ -190,15 +190,18 @@ enum NoteType {
 };
 
 class Buzzer {
-  int pin;
-  int tempo;
+  uint8_t pin;
+  uint8_t tempo;
+  uint8_t volume;
   BuzzerType buzzerType;
 
-  double getDuration(NoteType noteType, bool isDotted);
+  double getNoteDuration(NoteType noteType, bool isDotted);
 
   public:
     Buzzer(int p, BuzzerType bt);
     void setPin(int p);
+    void setTempo(uint_8 t);
+    void setVolume(uint_8 v);
     void setBuzzerType(BuzzerType bt);
     void play(Notes note, NoteType noteType, bool isDotted);
     void off();
