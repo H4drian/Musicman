@@ -195,6 +195,8 @@ class Buzzer {
   uint8_t volume;
   BuzzerType buzzerType;
 
+  void setPinAndType(uint8_t p, BuzzerType bt);
+
   double getNoteDuration(NoteType noteType, bool isDotted);
 
   public:
