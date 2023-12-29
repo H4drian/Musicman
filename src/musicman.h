@@ -174,10 +174,10 @@ class Buzzer {
 
   public:
     Buzzer(int p, BuzzerType bt);
-  void setPin(int p);
-  void setBuzzerType(BuzzerType bt);
-  void play(Notes note, NoteType noteType, bool isDotted);
-  void off();
+    void setPin(int p);
+    void setBuzzerType(BuzzerType bt);
+    void play(Notes note, NoteType noteType, bool isDotted);
+    void off();
 };
 
 #endif
