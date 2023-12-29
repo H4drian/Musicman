@@ -24,20 +24,16 @@
 
 #include "musicman.h"
 
-Buzzer::Buzzer(int p, BuzzerType bt) {
+void Buzzer::setPinAndType(uint_8 p, BuzzerType bt) {
   pin = p;
   buzzerType = bt;
 
   pinMode(pin, OUTPUT);
 }
 
-void Buzzer::setPin(int p) {
-  pin = p;
-}
+Buzzer::Buzzer(uint8_t p, BuzzerType bt) { setPinAndType(p, bt) };
 
-void Buzzer::setBuzzerType(BuzzerType bt) {
-  buzzerType = bt;
-}
+void Buzzer::setBuzzerType(uint_8 p, BuzzerType bt) { setPinAndType(p, bt) };
 
 void Buzzer::play(Notes note, NoteType noteType, bool isDotted) {
   const long dur = getNoteDuration(noteType, isDotted);
